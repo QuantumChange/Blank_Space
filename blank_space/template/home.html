@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+
+{% block title %} Home | Page {% endblock %}
+
+{% block body %}
+<div class="container my-5">
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-2">
+                <img src="/static/photo.jpg"class="img-fluid rounded-start my-2 mx-2"/>
+            </div>
+            <div class="col-md-10">
+                <div class="card-body">
+                    <h5 class="card-title">Shivam Dwivedi</h5>
+                    <p class="card-text">
+                        <small class="text-muted">System Engineer</small>
+                    </p>
+                    <p class="card-text">
+                        Secure a responsible career opportunity to fully utilize my training and skills, while making a significant
+                        contribution to the success of the company.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="container mb-5">
+    <div class="card">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        Skills
+                    </button>
+                </h2>
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>Python</li>
+                            <li>Java</li>
+                            <li>Web technologies ( HTML, CSS, JQuery)</li>
+                            <li>MySQL</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                        Education
+                    </button>
+                </h2>
+                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        Bachelor Of Computer Application Dr.Virendra Swarup Institute of Computer Studies
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        Certification
+                    </button>
+                </h2>
+                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>Digital : Python Certification (2018 - Present)</li>
+                            <li>Foundation : Core Java Concepts_Foundation (2018 - Present)</li>
+                            <li>Digital : HTML5-CSS3_Foundation (2018 - Present)</li>
+                            <li>Foundation : Web Development -JavaScript_Foundation (2018 - Present)</li>
+                        </ul></div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapsefour" aria-expanded="false" aria-controls="flush-collapsefour">
+                        Work Experience
+                    </button>
+                </h2>
+                <div id="flush-collapsefour" class="accordion-collapse collapse" aria-labelledby="flush-collapsefour" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body"><ul>
+                        <li>Developing automation products which will expedite the work.</li>
+                        <li>Developed an in house utility for data manipulation into SQL scripts for file transfer in Python (TCSION).</li>
+                        <li>Developed Image validating utility in Python for outside vendors and customers ( Staff Selection Commission, Institute of Banking Personnel Selection and Railway Recruitment Board). </li>
+                        <li>
+                            Developed scheduler in JAVA to automated data transfer from a client(Trinity College London) location by which we reduced the data insertion SLA(Service Time Period) from week to hours</li>
+                    </ul></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

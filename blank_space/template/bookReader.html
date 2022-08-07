@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block title %}Book Reader | Page{% endblock %}
+
+{% block body %}
+
+<script>
+    $(document).ready(function () {
+        $('#pageId li').on('click', function () {
+            $("#staticBackdrop").modal('show');
+            // alert("Hi page button is clicked - "+$(this).text());
+            $.ajax({
+                type: 'POST',
+                url: '/bookReaderAudio',
+                data: {
+                    pageId: $(this).text(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}'
+                },
+                success: function (response) {
+                    //alert(response['tag']);
+                    $('#audioFile').html(response['tag']);
+                },
+                error: function (response) {
+                    //alert(response['Error']);
+                    $("#ErrorOccurred").modal('show');
+                },
+                complete: function (response) {
+                    $("#staticBackdrop").modal('hide');
+                }
+            });
+        });
+    });
+</script>
+
+
+<!-- Loader Modal -->
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="false">
+    <div class="modal-dialog ">
+        <div class="text-center">
+            <div class="spinner-grow text-light" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- server Modal -->
+
+<div class="modal fade" id="ErrorOccurred" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="ErrorOccurredLabel" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger" id="ErrorOccurredLabel">Error</h5>
+            </div>
+            <div class="modal-body">
+                Some error occurred in loading audio file.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5">
+    <div class="card">
+        <div class="container my-5">
+            <object class="" style="width:-webkit-fill-available;" data="/static/bookReader/pdf/sample.pdf"
+                type="application/pdf" height="450">
+                alt : <a href="/static/bookReader/pdf/sample.pdf">sample.pdf</a>
+            </object>
+        </div>
+        <div class="container mb-5">
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+                    Select Page Number
+                </button>
+                <ul class="dropdown-menu" id="pageId" aria-labelledby="dropdownMenuButton1">
+                    {% for page in pageNo%}
+                    <li><a class="dropdown-item">{{ page }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="container mb-5" id="audioFile">
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}

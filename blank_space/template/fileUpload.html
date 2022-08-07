@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}File Upload | Page{% endblock %}
+
+{% block body %}
+<script>
+    $(document).ready(function () {
+        $("#fileUploadForm").submit(function (e) {
+            if ($('#file').val() == '') {
+                $("#staticModal").modal('show');
+                e.preventDefault();
+            }
+        });
+    });
+</script>
+{% if File_Upload %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#staticBackdrop").modal('show');
+    });
+</script>
+{% endif %}
+
+<!-- server Modal -->
+
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+            </div>
+            <div class="modal-body">
+                {{File_Upload}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Static Modal -->
+<div class="modal fade" id="staticModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticModalLabel" aria-hidden="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticModalLabel">Modal title</h5>
+                <!--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>-->
+            </div>
+            <div class="modal-body">
+                Please Select File For Upload
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="card m-5 w-50">
+    <div class="card-header">
+        Upload any type of file
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">File Upload</h5>
+        <form method="post" id="fileUploadForm" action="/fileUpload" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label class="form-label">Select File For Upload</label>
+            <input class="form-control mb-3" id="file" name="file" type="file">
+            <button class="btn btn-primary" type="submit" onclick="submitForm();">Upload</button>
+        </form>
+    </div>
+</div>
+
+
+{% endblock %}
